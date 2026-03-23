@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,500&family=Montserrat:wght@300;500&display=swap');
+
+        :root {
+            --deep-red: #800f2f;
+            --rose: #ff4d6d;
+            --cream: #fff5f8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- UPGRADED START SCREEN --- */
+        #start-screen {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #ffffff 0%, #ffccd5 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+            text-align: center;
+        }
+
+        .heart-icon {
+            font-size: 100px;
+            cursor: pointer;
+            filter: drop-shadow(0 10px 20px rgba(255, 77, 109, 0.3));
+            transition: transform 0.5s ease;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .heart-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .instruction {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--deep-red);
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        /* --- SCROLL INDICATOR --- */
+        #scroll-prompt {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none; /* Shown after start */
+            flex-direction: column;
+            align-items: center;
+            color: var(--rose);
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            z-index: 100;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* --- MAIN STORY CONTENT --- */
+        #main-content {
+            opacity: 0;
+            padding: 120px 20px 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            visibility: hidden;
+        }
+
+        .story-card {
+            background: white;
+            max-width: 550px;
+            width: 100%;
+            padding: 50px 40px;
+            margin-bottom: 120px; /* Forces her to scroll more */
+            border-radius: 30px;
+            box-shadow: 0 15px 45px rgba(255, 182, 193, 0.2);
+            opacity: 0;
+            transform: scale(0.9) translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .story-card.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .story-card p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            line-height: 2;
+            color: #333;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .chapter-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--rose);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        /* --- DECORATIONS --- */
+        .heart-particle {
+            position: fixed;
+            top: -50px;
+            z-index: 500;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <div class="heart-icon" onclick="openStory()">🎁</div>
+        <div class="instruction">For the girl who has my heart...</div>
+        <p style="color: #999; font-size: 0.8rem; letter-spacing: 1px; margin-top: 10px;">(TAP TO OPEN)</p>
+    </div>
+
+    <div id="scroll-prompt">
+        <span>KEEP SCROLLING</span>
+        <div style="font-size: 1.5rem; margin-top: 5px;">↓</div>
+    </div>
+
+    <div id="main-content">
+        <h1 style="font-family: 'Dancing Script', cursive; font-size: 4rem; color: var(--deep-red); margin-bottom: 100px; text-align: center;">Our Story ❤️</h1>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT I</div>
+            <p>I still remember that day as if it were a scene frozen in time — <strong>19th September, 2023</strong>, under the soft chaos of Ganesh Chaturthi, when we were all practicing for our dance performance.</p>
+        </div>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT II</div>
+            <p>The evening had that strange magic in it... During a break, we joked that somewhere inside all of us, there was someone we secretly carried in our hearts. And in that exact moment, we both looked at each other with that awkward, suspicious little connection that only later makes sense.</p>
+        </div>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT III</div>
+            <p>Then our friends decided we should dance in that romantic way, the kind where you’re close enough to feel the silence between two heartbeats. You were wearing that <strong>pink dress</strong>, and though I was paired with someone else first, something felt distant, unreal. Then the pair changed, and suddenly it was you.</p>
+        </div>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT IV</div>
+            <p>The moment I held your hips and we began to sway, the world seemed to slow down. I looked into your eyes and felt a sudden warmth, a trembling in my chest, <strong>butterflies</strong> rushing through me like they had been waiting all along for this one moment. It felt like love, simple and beautiful.</p>
+        </div>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT V</div>
+            <p>I remember standing too close for that photo, as if the air already knew our story was beginning. After all the laughter and the heartbeat-hidden glances, we sat on the sofa trying to act normal when nothing about that evening felt normal anymore.</p>
+        </div>
+
+        <div class="story-card">
+            <div class="chapter-number">MOMENT VI</div>
+            <p>The next day, by the lift, the truth finally found its voice. We confessed to each other, both scared, both hoping. I was afraid you wouldn’t say my name. <strong>But you did.</strong></p>
+        </div>
+
+        <div class="story-card" style="border: 2px solid var(--rose);">
+            <div class="chapter-number">TODAY</div>
+            <p style="text-align: center;">From that moment on, our story began — and everything since then has felt like a film I never want to end. <br><br> <span style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--rose);">Happy Birthday ❤️</span></p>
+        </div>
+    </div>
+
+    <script>
+        function openStory() {
+            // Hide start screen and show content
+            const startScreen = document.getElementById('start-screen');
+            const mainContent = document.getElementById('main-content');
+            const scrollPrompt = document.getElementById('scroll-prompt');
+            
+            startScreen.style.transform = 'translateY(-110%)';
+            mainContent.style.visibility = 'visible';
+            mainContent.style.opacity = '1';
+            scrollPrompt.style.display = 'flex';
+            
+            // Start heart particles
+            setInterval(createHeart, 300);
+            
+            // Small delay before initial scroll check
+            setTimeout(handleScroll, 1000);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            const icons = ['❤️', '💖', '✨', '🌸'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        function handleScroll() {
+            const cards = document.querySelectorAll('.story-card');
+            const scrollPrompt = document.getElementById('scroll-prompt');
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (cardTop < windowHeight * 0.8) {
+                    card.classList.add('active');
+                }
+            });
+
+            // Hide the "Keep Scrolling" hint once she nears the end
+            const totalHeight = document.documentElement.scrollHeight;
+            const scrollPos = window.scrollY + window.innerHeight;
+            if (scrollPos > totalHeight - 200) {
+                scrollPrompt.style.opacity = '0';
+            } else {
+                scrollPrompt.style.opacity = '1';
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
